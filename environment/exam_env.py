@@ -78,6 +78,7 @@ class ExamProctoringEnv(gym.Env):
         min_cheat_dur: int = 3,
         max_cheat_dur: int = 8,
         sim_seed: Optional[int] = None,
+        reward_table: Optional[dict] = None,
     ):
         super().__init__()
 
@@ -90,6 +91,7 @@ class ExamProctoringEnv(gym.Env):
         )
         self.action_space = spaces.Discrete(N_ACTIONS)
 
+        self._reward_table = reward_table if reward_table is not None else _REWARD_TABLE
         self._ae_model, self._scaler = load_model()
         self._sim   = GazeSimulator(seed=sim_seed)
         self._rng   = np.random.default_rng(sim_seed)
@@ -119,7 +121,7 @@ class ExamProctoringEnv(gym.Env):
         assert self._labels is not None, "Call reset() before step()"
 
         label  = int(self._labels[self._step])
-        reward = _REWARD_TABLE.get((label, int(action)), 0.0)
+        reward = self._reward_table.get((label, int(action)), 0.0)
 
         info = {
             "true_label": label,
