@@ -30,9 +30,9 @@ N_FEATURES = len(FEATURE_NAMES)   # 6
 LATENT_DIM = 8
 
 
-# ---------------------------------------------------------------------------
+# 
 # Model definition
-# ---------------------------------------------------------------------------
+
 
 class GazeAutoencoder(nn.Module):
     def __init__(self):
@@ -56,9 +56,7 @@ class GazeAutoencoder(nn.Module):
         return self.encoder(x)
 
 
-# ---------------------------------------------------------------------------
 # Training
-# ---------------------------------------------------------------------------
 
 def train(
     n_honest: int = 10_000,
@@ -112,9 +110,7 @@ def train(
     return model, scaler, history
 
 
-# ---------------------------------------------------------------------------
 # Inference helpers
-# ---------------------------------------------------------------------------
 
 def load_model() -> tuple[GazeAutoencoder, StandardScaler]:
     """Load saved model and scaler from disk."""
@@ -158,9 +154,7 @@ def get_latent(
     return z.numpy().flatten()
 
 
-# ---------------------------------------------------------------------------
 # Validation
-# ---------------------------------------------------------------------------
 
 def validate(
     model: GazeAutoencoder,
@@ -242,9 +236,7 @@ def _plot_separation(honest, cheat, threshold, metrics):
     print(f"Saved {out}")
 
 
-# ---------------------------------------------------------------------------
 # Entry point
-# ---------------------------------------------------------------------------
 
 if __name__ == "__main__":
     print("=== Training autoencoder ===")

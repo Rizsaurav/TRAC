@@ -73,9 +73,7 @@ CLAMP_RANGES = {
 }
 
 
-# ---------------------------------------------------------------------------
 # Core simulator
-# ---------------------------------------------------------------------------
 
 class GazeSimulator:
     """
@@ -93,9 +91,7 @@ class GazeSimulator:
         self.rng = np.random.default_rng(seed)
         self.subject_variance_scale = subject_variance_scale
 
-    # ------------------------------------------------------------------
     # Public API
-    # ------------------------------------------------------------------
 
     def generate_window(self, label: int) -> np.ndarray:
         """
@@ -219,9 +215,7 @@ class GazeSimulator:
         return out
 
 
-# ---------------------------------------------------------------------------
 # Quick smoke-test / demo
-# ---------------------------------------------------------------------------
 
 def _demo():
     import matplotlib.pyplot as plt
