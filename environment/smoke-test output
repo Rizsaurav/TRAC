@@ -1,0 +1,7 @@
+Rolling out one episode with random policy:
+  Total reward   : -50.20
+  Cheating steps : 0
+  Alerts fired   : 34
+  Obs shape      : (10,)
+  Obs sample     : [0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+saurav@Sauravs-Air environment % git add .
